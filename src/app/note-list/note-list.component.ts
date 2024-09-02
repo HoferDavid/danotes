@@ -22,13 +22,22 @@ export class NoteListComponent {
   constructor(private noteService: NoteListService) {
   }
 
+
   getList(): Note[] {
     return this.noteService.normalNotes;
   }
 
+
+  // getList(notes: []): Note[] {
+  //   let noteToRreturn = notes == this.noteService.normalNotes ? this.noteService.normalNotes : this.noteService.trashNotes;
+  //   return noteToRreturn;
+  // }
+
+
   changeFavFilter(filter:"all" | "fav"){
     this.favFilter = filter;
   }
+
 
   changeTrashStatus(){
     if(this.status == "trash"){

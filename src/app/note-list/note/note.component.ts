@@ -15,11 +15,12 @@ export class NoteComponent {
   @Input() note!:Note;
   edit = false;
   hovered = false;
-  
+
   constructor(private noteService: NoteListService){}
 
   changeMarkedStatus(){
     this.note.marked = !this.note.marked;
+    this.saveNote();
   }
 
   deleteHovered(){
@@ -50,6 +51,6 @@ export class NoteComponent {
   }
 
   saveNote(){
-    
+    this.noteService.updateNote(this.note);
   }
 }

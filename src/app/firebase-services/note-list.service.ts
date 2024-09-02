@@ -1,12 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Note } from '../interfaces/note.interface';
-import {
-  Firestore,
-  collection,
-  doc,
-  collectionData,
-  onSnapshot,
-} from '@angular/fire/firestore';
+import { Firestore, collection, doc, collectionData, onSnapshot, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -27,6 +21,15 @@ export class NoteListService {
   constructor() {
     this.unsubNotes = this.subNotesList();
     this.unsubTrash = this.subTrashList();
+  }
+
+
+  async addNote(item: Note) {
+    await addDoc(this.getNotesRef(), item).catch(
+      (err) => { console.error(err) }
+    ).then(
+      (docRef) => { console.log("Document written with ID: ", docRef?.id); }
+    );
   }
 
 

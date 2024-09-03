@@ -34,7 +34,7 @@ export class NoteListComponent {
   // }
 
 
-  changeFavFilter(filter:"all" | "fav"){
+  changeFavFilter(filter: "all" | "fav"){
     this.favFilter = filter;
   }
 

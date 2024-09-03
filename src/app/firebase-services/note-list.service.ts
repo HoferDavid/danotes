@@ -34,8 +34,8 @@ export class NoteListService {
   async updateNote(note: Note) {
     if(note.id) {
       let docRef = this.getSingleDocRef(this.getColIdFromNote(note), note.id);
-      await updateDoc(docRef, this.getCleanJson(note)).catch(
-        (err) => { console.error(err) }
+      await updateDoc(docRef, this.getCleanJson(note)).catch((err) => {
+        console.error(err) }
       );
     }
   }
@@ -61,10 +61,12 @@ export class NoteListService {
 
 
   async addNote(item: Note, colId: 'notes' | 'trash') {
-    await addDoc(this.getNotesRef(), item).catch((err) => { console.error(err) }
-    ).then(
-      (docRef) => { console.log("Document written with ID: ", docRef?.id) }
-    );
+    if(colId == 'notes') {
+      await addDoc(this.getNotesRef(), item)
+    } else {
+      await addDoc(this.getTrashRef(), item).catch((err) => { console.error(err)
+    });
+  }
   }
 
 

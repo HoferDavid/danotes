@@ -24,14 +24,12 @@ export class NoteListComponent {
 
 
   getList(): Note[] {
-    return this.noteService.normalNotes;
+    if(this.status == 'notes') {
+      return this.noteService.normalNotes;
+    } else {
+      return this.noteService.trashNotes;
+    }
   }
-
-
-  // getList(notes: []): Note[] {
-  //   let noteToRreturn = notes == this.noteService.normalNotes ? this.noteService.normalNotes : this.noteService.trashNotes;
-  //   return noteToRreturn;
-  // }
 
 
   changeFavFilter(filter: "all" | "fav"){

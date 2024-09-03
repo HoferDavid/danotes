@@ -43,7 +43,7 @@ export class NoteComponent {
   }
 
 
-  moveToTrash(){
+  moveToTrash() {
     if(this.note.id) {
       this.note.type = 'trash';
       let docId = this.note.id;
@@ -54,19 +54,31 @@ export class NoteComponent {
   }
 
 
-  moveToNotes(){
-    this.note.type = 'note';
+  // moveToNotes() {
+  //   this.note.type = 'note';
+  // }
+
+
+  moveToNotes() {
+
+    if(this.note.id) {
+      this.note.type = 'note';
+      let docId = this.note.id;
+      delete this.note.id;
+      this.noteService.addNote(this.note, 'notes');
+      this.noteService.deleteNote('trash', docId);
+    }
   }
 
 
-  deleteNote(){
+  deleteNote() {
     if(this.note.id) {
       this.noteService.deleteNote('trash', this.note.id);
     }
   }
 
 
-  saveNote(){
+  saveNote() {
     this.noteService.updateNote(this.note);
   }
 }

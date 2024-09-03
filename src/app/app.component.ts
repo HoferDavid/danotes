@@ -15,6 +15,6 @@ import { AddNoteDialogComponent } from './add-note-dialog/add-note-dialog.compon
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'DAKeep';
+  title = 'danotes';
   addDialogOpen = false;
 }

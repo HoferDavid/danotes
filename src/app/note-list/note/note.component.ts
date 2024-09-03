@@ -54,13 +54,7 @@ export class NoteComponent {
   }
 
 
-  // moveToNotes() {
-  //   this.note.type = 'note';
-  // }
-
-
   moveToNotes() {
-
     if(this.note.id) {
       this.note.type = 'note';
       let docId = this.note.id;
